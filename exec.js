@@ -14,7 +14,10 @@ let exec = (cmd, option) => {
         defaultOption = extend(true, defaultOption, option);
     }
     return new Promise((resolve, reject) => {
-        child_process.exec(cmd, defaultOption, (err, stdout, stderr) => {
+        cmd = cmd.split(' ');
+        var cmdFile = cmd[0];
+        cmd.shift();
+        child_process.execFile(cmdFile, [cmd], defaultOption, (err, stdout, stderr) => {
             if (err) {
                 reject(err, stdout, stderr);
             } else {
