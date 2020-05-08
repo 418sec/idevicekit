@@ -17,7 +17,7 @@ let exec = (cmd, option) => {
         cmd = cmd.split(' ');
         var cmdFile = cmd[0];
         cmd.shift();
-        child_process.execFile(cmdFile, [cmd], defaultOption, (err, stdout, stderr) => {
+        child_process.execFile(cmdFile, cmd, defaultOption, (err, stdout, stderr) => {
             if (err) {
                 reject(err, stdout, stderr);
             } else {
